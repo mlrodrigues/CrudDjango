@@ -1,0 +1,45 @@
+{% extends 'users/base.html' %}
+{% block content %}
+	<a href="{% url 'createCompanies' %}">Nova Empresa</a>
+	<div _ngcontent-jxv-c8="" class="col-md-12">
+		<div _ngcontent-jxv-c8="" class="card">
+			<div _ngcontent-jxv-c8="" class="card-header card-header-primary">
+				<h4 _ngcontent-jxv-c8="" class="card-title"><b>Empresas</b></h4>
+				<p _ngcontent-jxv-c8="" class="card-category"><b>Listas de empresas</b></p>
+			</div>
+
+			<div _ngcontent-jxv-c8="" class="card-body">
+				<div _ngcontent-jxv-c8="" class="table-responsive">
+					<table _ngcontent-jxv-c8="" class="table">
+						<thead _ngcontent-jxv-c8="" class="text-primary">
+							<th _ngcontent-jxv-c8="">ID</th>
+							<th _ngcontent-jxv-c8="">Nome</th>
+							<th _ngcontent-jxv-c8="">Fuso horarío</th>
+							<th _ngcontent-jxv-c8="">Linguagem</th>
+							<th _ngcontent-jxv-c8="">Criado por</th>
+							<th _ngcontent-jxv-c8="">Data de Criação</th>
+							<th _ngcontent-jxv-c8="">Ações</th>
+						</thead>
+						<tbody _ngcontent-jxv-c8="">
+							{% for company in companies %}
+								<tr _ngcontent-jxv-c8="">
+									<td _ngcontent-jxv-c8="">{{company.pk}}</td>
+									<td _ngcontent-jxv-c8="">{{company.name}}</td>
+									<td _ngcontent-jxv-c8="">{{company.locale}}</td>
+									<td _ngcontent-jxv-c8="">{{company.lang}}</td>
+
+									<td _ngcontent-jxv-c8="">{{company.create_by}}</td>
+									<td _ngcontent-jxv-c8="" class="text-primary">{{company.created_at}}</td>
+									<td>
+										<a href="{% url 'updateCompanies' company.pk %}">Editar</a>
+										<a href="{% url 'deleteCompanies' company.pk %}">Apagar</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

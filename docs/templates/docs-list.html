@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+{% block content %}
+	<a href="{% url 'createDocs' %}">Novo Documento</a>
+	<div _ngcontent-jxv-c8="" class="col-md-12">
+		<div _ngcontent-jxv-c8="" class="card">
+			<div _ngcontent-jxv-c8="" class="card-header card-header-primary">
+				<h4 _ngcontent-jxv-c8="" class="card-title"><b>Documentos</b></h4>
+				<p _ngcontent-jxv-c8="" class="card-category"><b>Listas de documentos</b></p>
+			</div>
+
+			<div _ngcontent-jxv-c8="" class="card-body">
+				<div _ngcontent-jxv-c8="" class="table-responsive">
+					<table _ngcontent-jxv-c8="" class="table">
+						<thead _ngcontent-jxv-c8="" class="text-primary">
+							<th _ngcontent-jxv-c8="">ID</th>
+							<th _ngcontent-jxv-c8="">Nome</th>
+							<th _ngcontent-jxv-c8="">Deletado</th>
+							<th _ngcontent-jxv-c8="">Criado por</th>
+							<th _ngcontent-jxv-c8="">Empresa</th>
+							<th _ngcontent-jxv-c8="">Data limite</th>
+                            <th _ngcontent-jxv-c8="">Assinado</th>
+							<th _ngcontent-jxv-c8="">Ações</th>
+						</thead>
+						<tbody _ngcontent-jxv-c8="">
+							{% for doc in docs %}
+								<tr _ngcontent-jxv-c8="">
+									<td _ngcontent-jxv-c8="">{{doc.pk}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.name}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.locale}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.lang}}</td>
+
+									<td _ngcontent-jxv-c8="">{{doc.create_by}}</td>
+									<td _ngcontent-jxv-c8="" class="text-primary">{{doc.created_at}}</td>
+									<td>
+										<a href="{% url 'updateDocs' doc.pk %}">Editar</a>
+										<a href="{% url 'deleteDocs' doc.pk %}">Apagar</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
