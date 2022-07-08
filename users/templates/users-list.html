@@ -28,7 +28,8 @@
 									<td _ngcontent-jxv-c8="">{{user.company_name}}</td>
 									<td _ngcontent-jxv-c8="" class="text-primary">{{user.created_at}}</td>
 									<td>
-										<a href="{% url 'update_Users' user.pk %}">Editar</a>
+										<a href="{% url 'showUsers' user.pk %}">Ver</a>
+										<a href="{% url 'updateUsers' user.pk %}">Editar</a>
 										<a href="{% url 'deleteUsers' user.pk %}">Apagar</a>
 									</td>
 								</tr>

@@ -8,7 +8,6 @@ def listCompanies(request):
 		'SELECT u.id, u.email, u.password, u.created_at, c.name, c.created_at, c.locale, c.lang FROM companies_companies as c LEFT JOIN users_users as u')
 	return render(request, 'companies-list.html', {'companies': companies})
 
-
 def listCompaniesUsers(request, id):
 	companiesUsers = Companies.objects.raw(
 		'SELECT users.email, comp.name FROM companies_companies_users as ccu INNER JOIN companies_companies as comp ON comp.id = ccu.companies_id INNER JOIN users_users as users ON users.id = ccu.users_id WHERE ccu.companies_id = ' + id)

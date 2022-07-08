@@ -8,9 +8,17 @@ def listUsers(request):
 	users = Users.objects.raw('SELECT u.id, u.email, u.password, u.created_at, c.name as company_name, c.created_at, c.locale, c.lang FROM users_users as u INNER JOIN companies_companies as c')
 	return render(request, 'users-list.html', {'users': users})
 
-def listDocsUsers(request, id):
-	usersdocs = Docs.objects.raw('SELECT doc.nome, doc.created_at, doc.signed, comp.name FROM docs_docs as doc INNER JOIN companies_companies as comp WHERE doc.id = ' + id)
-	return render(request, 'users-list.html', {'usersdocs': usersdocs})
+def listInfoUsers(request, id):
+	usersdocs = Docs.objects.raw('SELECT doc.id, doc.nome, doc.created_at, doc.signed, user.email FROM docs_docs as doc INNER JOIN users_users as user ON doc.user_id == user.id WHERE user.id = ' + str(id))
+	companiesUsers = Companies.objects.raw(
+		'SELECT users.id, users.email, comp.name FROM companies_companies_users as ccu INNER JOIN companies_companies as comp ON comp.id == ccu.companies_id INNER JOIN users_users as users ON users.id == ccu.users_id WHERE users.id = ' + str(id))
+
+	return render(request, 'users-list-info.html', {'usersdocs': usersdocs, 'companies': companiesUsers })
+
+def listCompaniesUsers(request, id):
+	companiesUsers = Companies.objects.raw(
+		'SELECT users.email, comp.name FROM companies_companies_users as ccu INNER JOIN companies_companies as comp ON comp.id == ccu.companies_id INNER JOIN users_users as users ON users.id == ccu.users_id WHERE users.id = ' + str(id))
+	return render(request, 'users-list-info.html', {'companies': companiesUsers})
 
 def createUsers(request):
 	form = UsersForm(request.POST or None)

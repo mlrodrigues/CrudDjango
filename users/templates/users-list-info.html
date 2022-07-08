@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+	<a href="{% url 'listUsers' %}">Voltar</a>
+	<div _ngcontent-jxv-c8="" class="col-md-12">
+		<div _ngcontent-jxv-c8="" class="card">
+			<div _ngcontent-jxv-c8="" class="card-header card-header-primary">
+				<h4 _ngcontent-jxv-c8="" class="card-title"><b>Usuários</b></h4>
+				<p _ngcontent-jxv-c8="" class="card-category"><b>Listas de documentos</b></p>
+			</div>
+
+			<div _ngcontent-jxv-c8="" class="card-body">
+				<div _ngcontent-jxv-c8="" class="table-responsive">
+					<table _ngcontent-jxv-c8="" class="table">
+						<thead _ngcontent-jxv-c8="" class="text-primary">
+							<th _ngcontent-jxv-c8="">ID</th>
+							<th _ngcontent-jxv-c8="">Email</th>
+							<th _ngcontent-jxv-c8="">Documento</th>
+						</thead>
+						<tbody _ngcontent-jxv-c8="">
+							{% for usersdoc in usersdocs %}
+								<tr _ngcontent-jxv-c8="">
+									<td _ngcontent-jxv-c8="">{{usersdoc.pk}}</td>
+									<td _ngcontent-jxv-c8="">{{usersdoc.email}}</td>
+									<td _ngcontent-jxv-c8="">{{usersdoc.nome}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<div _ngcontent-jxv-c8="" class="col-md-12">
+		<div _ngcontent-jxv-c8="" class="card">
+			<div _ngcontent-jxv-c8="" class="card-header card-header-primary">
+				<p _ngcontent-jxv-c8="" class="card-category"><b>Listas de Empresas</b></p>
+			</div>
+
+			<div _ngcontent-jxv-c8="" class="card-body">
+				<div _ngcontent-jxv-c8="" class="table-responsive">
+					<table _ngcontent-jxv-c8="" class="table">
+						<thead _ngcontent-jxv-c8="" class="text-primary">
+							<th _ngcontent-jxv-c8="">ID</th>
+							<th _ngcontent-jxv-c8="">Email</th>
+							<th _ngcontent-jxv-c8="">Documento</th>
+						</thead>
+						<tbody _ngcontent-jxv-c8="">
+							{% for company in companies %}
+								<tr _ngcontent-jxv-c8="">
+									<td _ngcontent-jxv-c8="">{{company.pk}}</td>
+									<td _ngcontent-jxv-c8="">{{company.email}}</td>
+									<td _ngcontent-jxv-c8="">{{company.name}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>	
+{% endblock content %}
