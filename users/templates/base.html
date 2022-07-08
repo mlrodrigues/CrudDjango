@@ -10,9 +10,9 @@
   <body>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#">Usuários</a></li>
-      <li><a href="#">Empresas</a></li>
-      <li><a href="#">Documentos</a></li>
+      <li><a href="{% url 'listUsers' %}">Usuários</a></li>
+      <li><a href="{% url 'listCompanies' %}">Empresas</a></li>
+      <li><a href="{% url 'listDocs' %}">Documentos</a></li>
 
     </ul>
     {% block content %} {% endblock content %}
