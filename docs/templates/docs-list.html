@@ -1,4 +1,4 @@
-{% extends 'users/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 	<a href="{% url 'createDocs' %}">Novo Documento</a>
 	<div _ngcontent-jxv-c8="" class="col-md-12">
@@ -25,12 +25,13 @@
 							{% for doc in docs %}
 								<tr _ngcontent-jxv-c8="">
 									<td _ngcontent-jxv-c8="">{{doc.pk}}</td>
-									<td _ngcontent-jxv-c8="">{{doc.name}}</td>
-									<td _ngcontent-jxv-c8="">{{doc.locale}}</td>
-									<td _ngcontent-jxv-c8="">{{doc.lang}}</td>
-
-									<td _ngcontent-jxv-c8="">{{doc.create_by}}</td>
-									<td _ngcontent-jxv-c8="" class="text-primary">{{doc.created_at}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.nome}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.deleted}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.created_at}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.company_name}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.date_limit_to_sign}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.signed}}</td>
+									<td _ngcontent-jxv-c8="">{{doc.email}}</td>
 									<td>
 										<a href="{% url 'updateDocs' doc.pk %}">Editar</a>
 										<a href="{% url 'deleteDocs' doc.pk %}">Apagar</a>

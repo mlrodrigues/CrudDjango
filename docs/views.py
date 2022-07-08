@@ -3,7 +3,8 @@ from .models import Docs
 from .forms import docsForms
 
 def listDocs(request):
-	docs = Docs.objects.all()
+	docs = Docs.objects.raw(
+		'SELECT docs.id, docs.nome, docs.created_at, docs.date_limit_to_sign, docs.signed, comp.name as company_name, users.email FROM docs_docs as docs INNER JOIN companies_companies as comp ON comp.id = docs.company_id INNER JOIN users_users as users ON users.id = docs.user_id')
 	return render(request, 'docs-list.html', {'docs': docs})
 
 def createDocs(request):

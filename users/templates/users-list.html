@@ -1,4 +1,4 @@
-{% extends 'users/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 	<a href="{% url 'createUsers' %}">Novo Usuário</a>
 	<div _ngcontent-jxv-c8="" class="col-md-12">
@@ -20,16 +20,15 @@
 							<th _ngcontent-jxv-c8="">Ações</th>
 						</thead>
 						<tbody _ngcontent-jxv-c8="">
-							{{usersList.html}}
 							{% for user in users %}
 								<tr _ngcontent-jxv-c8="">
 									<td _ngcontent-jxv-c8="">{{user.pk}}</td>
 									<td _ngcontent-jxv-c8="">{{user.email}}</td>
 									<td _ngcontent-jxv-c8="">{{user.password}}</td>
-									<td _ngcontent-jxv-c8="">apple</td>
+									<td _ngcontent-jxv-c8="">{{user.company_name}}</td>
 									<td _ngcontent-jxv-c8="" class="text-primary">{{user.created_at}}</td>
 									<td>
-										<a href="{% url 'updateUsers' user.pk %}">Editar</a>
+										<a href="{% url 'update_Users' user.pk %}">Editar</a>
 										<a href="{% url 'deleteUsers' user.pk %}">Apagar</a>
 									</td>
 								</tr>

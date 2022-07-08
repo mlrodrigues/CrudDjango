@@ -1,4 +1,4 @@
-{% extends 'users/base.html' %}
+{% extends 'base.html' %}
 {% block content %}
 	<a href="{% url 'createCompanies' %}">Nova Empresa</a>
 	<div _ngcontent-jxv-c8="" class="col-md-12">
@@ -24,11 +24,10 @@
 							{% for company in companies %}
 								<tr _ngcontent-jxv-c8="">
 									<td _ngcontent-jxv-c8="">{{company.pk}}</td>
-									<td _ngcontent-jxv-c8="">{{company.name}}</td>
+									<td _ngcontent-jxv-c8="">{{company.name}}</td>	
 									<td _ngcontent-jxv-c8="">{{company.locale}}</td>
 									<td _ngcontent-jxv-c8="">{{company.lang}}</td>
-
-									<td _ngcontent-jxv-c8="">{{company.create_by}}</td>
+									<td _ngcontent-jxv-c8="">{{company.email}}</td>
 									<td _ngcontent-jxv-c8="" class="text-primary">{{company.created_at}}</td>
 									<td>
 										<a href="{% url 'updateCompanies' company.pk %}">Editar</a>
